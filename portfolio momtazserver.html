@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>portfolio</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Montserrat:400,500     ,600');
+
+        body {
+            padding: 0;
+            margin-top: 0;
+            font-family: 'Montserrat', sans-serif;
+            background-color: #3c65cc;
+        }
+
+        h1 {
+            font-size: 60px;
+            text-align: center;
+        }
+
+        .timeline {
+            position: relative;
+            margin: 50px auto;
+            padding: 90px 0;
+            width: 1000px;
+            box-sizing: border-box;
+            background: #ECF1F524;
+            backdrop-filter: blur(15px);
+            overflow: hidden;
+            position: relative;
+            /*margin-left:17%;*/
+            align-items: center;
+            box-shadow: 0px 20px 53px -30px rgba(95, 102, 173, 0.566816);
+            border-radius: 10px;
+            margin-top: 10%;
+        }
+
+        .timeline:before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            width: 2px;
+            height: 100%;
+            background: #c5c5c5;
+        }
+
+        .timeline ul {
+            padding: 0;
+            margin: 0;
+        }
+
+        .timeline ul li {
+            list-style: none;
+            position: relative;
+            width: 50%;
+            padding: 20px 40px;
+            box-sizing: border-box;
+        }
+
+        .timeline ul li:nth-child(odd) {
+            float: left;
+            text-align: right;
+            clear: both;
+        }
+
+        .timeline ul li:nth-child(even) {
+            float: right;
+            text-align: left;
+            clear: both;
+        }
+
+        .content {
+            padding-bottom: 20px;
+
+
+        }
+
+        .timeline ul li:nth-child(odd):before {
+            content: '';
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            top: 24px;
+            right: -6px;
+            background: #3051a2;
+            border-radius: 50%;
+            box-shadow: 0 0 0 3px #3051a240;
+        }
+
+        .timeline ul li:nth-child(even):before {
+            content: '';
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            top: 24px;
+            left: -4px;
+            background: #3051a2;
+            border-radius: 50%;
+            box-shadow: 0 0 0 3px #3051a240;
+        }
+
+        .timeline ul li h3 {
+            padding: 0;
+            margin: 0;
+            color: #333333;
+            font-weight: 600;
+        }
+
+        .timeline ul li p {
+            margin: 10px 0 0;
+            padding: 0;
+        }
+
+        .timeline ul li .time h4 {
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+        }
+
+        .timeline ul li:nth-child(odd) .time {
+            position: absolute;
+            top: 12px;
+            right: -250px;
+            margin: 0;
+            padding: 8px 16px;
+            background: #3051a2;
+            color: #fff;
+            border-radius: 18px;
+            box-shadow: 0 0 0 3px #3051a240;
+        }
+
+        .timeline ul li:nth-child(even) .time {
+            position: absolute;
+            top: 12px;
+            left: -250px;
+            margin: 0;
+            padding: 8px 16px;
+            background: #3051a2;
+            color: #fff;
+            border-radius: 18px;
+            box-shadow: 0 0 0 3px #3051a240;
+        }
+
+        @media(max-width:1000px) {
+            .timeline {
+                width: 100%;
+            }
+        }
+
+        @media(max-width:680px) {
+            .timeline {
+                width: 100%;
+                padding-bottom: 0;
+
+
+            }
+
+            h1 {
+                font-size: 40px;
+                text-align: center;
+            }
+
+            .timeline:before {
+                left: 20px;
+                height: 100%;
+            }
+
+            .timeline ul li:nth-child(odd),
+            .timeline ul li:nth-child(even) {
+                width: 100%;
+                text-align: left;
+                padding-left: 50px;
+                padding-bottom: 50px;
+            }
+
+            .timeline ul li:nth-child(odd):before,
+            .timeline ul li:nth-child(even):before {
+                top: -18px;
+                left: 16px;
+            }
+
+            .timeline ul li:nth-child(odd) .time,
+            .timeline ul li:nth-child(even) .time {
+                top: -30px;
+                left: 50px;
+                right: inherit;
+            }
+        }
+
+        /*.timeline ul li:nth-child(odd){
+            background-color: #e1e1e1;
+        }*/
+        .container {
+            margin-left: 50%;
+            position: relative;
+            width: 24px;
+            height: 24px;
+        }
+
+        .chevron {
+            position: absolute;
+            margin-top: 40px;
+            width: 28px;
+            height: 8px;
+            opacity: 0;
+            transform: scale3d(0.5, 0.5, 0.5);
+            animation: move 3s ease-out infinite;
+        }
+
+        .chevron:first-child {
+            animation: move 3s ease-out 1s infinite;
+        }
+
+        .chevron:nth-child(2) {
+            animation: move 3s ease-out 2s infinite;
+        }
+
+        .chevron:before,
+        .chevron:after {
+            content: ' ';
+            position: absolute;
+            top: 0;
+            height: 100%;
+            width: 51%;
+            background: rgb(82, 82, 82);
+        }
+
+        .chevron:before {
+            left: 0;
+            transform: skew(0deg, 30deg);
+        }
+
+        .chevron:after {
+            right: 0;
+            width: 50%;
+            transform: skew(0deg, -30deg);
+        }
+
+        @keyframes move {
+            25% {
+                opacity: 1;
+
+            }
+
+            33% {
+                opacity: 1;
+                transform: translateY(30px);
+            }
+
+            67% {
+                opacity: 1;
+                transform: translateY(40px);
+            }
+
+            100% {
+                opacity: 0;
+                transform: translateY(55px) scale3d(0.5, 0.5, 0.5);
+            }
+        }
+
+        /*.first , .second , .third{
+            margin: -20px;
+            border: solid black 3px;
+            border-radius: 10px;
+        }*/
+        .first {
+            opacity: 0;
+            margin-left: -300px;
+        }
+
+        .second {
+            opacity: 0;
+            margin-right: -300px;
+        }
+
+        .third {
+            opacity: 0;
+            margin-left: -300px;
+
+        }
+
+        .forth {
+            opacity: 0;
+            margin-right: -300px;
+        }
+
+        .fifth {
+            opacity: 0;
+            margin-left: -300px;
+
+        }
+
+        .sixth {
+            opacity: 0;
+            margin-right: -300px;
+
+        }
+
+        .seventh {
+            opacity: 0;
+            margin-left: -300px;
+
+        }
+
+        .eighth {
+            opacity: 0;
+            margin-right: -300px;
+
+        }
+
+        .nineth {
+            opacity: 0;
+            margin-left: -300px;
+
+        }
+
+        .tenth {
+            opacity: 0;
+            margin-right: -300px;
+
+        }
+        .eleventh{
+            opacity: 0;
+            margin-left: -300px;
+        }
+        .twelveth{
+            opacity: 0;
+            margin-right: -300px;
+        }
+        .thirteenth{
+            opacity: 0;
+            margin-left: -300px;
+        }
+        .content {
+            padding: 30px 50px;
+            position: relative;
+            display: inline-block;
+            transition: all 2s ease-in-out;
+        }
+
+        @media(min-width: 320px) {
+            body {
+                max-width: 100%;
+                overflow-x: hidden;
+            }
+        }
+
+
+        @media (max-width:700px){.eyy{margin-left: 0;}}
+        .tasvir{
+            display: inline-block;
+	        width: 200px;
+	        height: 270px;
+	        overflow: hidden;
+	        position: relative;
+            border-top: 30px solid #4f4f4f;
+            border-bottom: 30px solid #4f4f4f;
+            border-left: 10px solid #4f4f4f;
+            border-right: 10px solid #4f4f4f;
+	        border-radius: 20px;
+	        margin: 0 auto;
+            padding-bottom: 20px;
+        }
+        .tasvir img {
+	        width: 100%;
+	        height: auto;
+	        position: absolute;
+	        z-index: 0;
+            margin:0;
+            padding:0;
+            object-fit: cover;
+            transform: translateY(0);
+            transition: 4s ease-out;
+            display: block;
+            
+        }
+        .tasvir:hover img {
+            object-fit: cover;
+            width: 100%;
+            transform: translateY(calc(-100% + 300px));
+            transition: 4s ease-out;
+            
+        }
+        @media (max-width: 360px){
+            .content{
+                left: -20%;
+            }
+        }
+        
+    </style>
+</head>
+
+<body>
+    <h1 class="draw">Portfolio Presentation</h1>
+    <div class="container">
+        <div class="chevron"></div>
+        <div class="chevron"></div>
+        <div class="chevron"></div>
+    </div>
+
+
+
+    <div class="timeline">
+        <ul>
+            <li class="first">
+                <div class="content">
+                    <h3 style="margin-bottom: 20px; text-align: center;">صفحه اصلی سایت قطعات سخت افزاری</h3>
+                    <div class="tasvir">
+                        <img class="eyy" src="https://momtazserver.com/wp-content/uploads/2021/09/mrp30.com_.png">
+                    </div>
+                    <svg style="max-width: 5%; left: 50%; bottom: 125px; position:absolute" viewBox="0 0 15.4 13.7">
+                        <path
+                            d="M16.4,5.3A4.4,4.4,0,0,0,13.3,4a4.1,4.1,0,0,0-2.4.8,9.4,9.4,0,0,0-1,1L9,4.8A4.6,4.6,0,0,0,6.5,4a4.3,4.3,0,0,0-3,1.3A4.8,4.8,0,0,0,2.3,8.6a5.6,5.6,0,0,0,1.5,3.8,27,27,0,0,0,3.8,3.5l1.7,1.5a.9.9,0,0,0,.6.3.7.7,0,0,0,.6-.3l1.8-1.5a34.1,34.1,0,0,0,3.8-3.5,6.1,6.1,0,0,0,1.5-3.8A5,5,0,0,0,16.4,5.3Z"
+                            transform="translate(-2.3 -4)" fill="#ecb865" />
+                    </svg>
+                    <p style="text-align: center;">کد: 509<br>
+                        فروش آنلاین<br>
+                        طرح بندی مناسب<br>
+                        ارائه قطعات سخت افزاری </p>
+
+                </div>
+                <div class="time">
+                    <h4><a href="https://mrp30.com/" style="color: white; text-decoration: none;">mrp30.com</a></h4>
+                </div>
+            </li>
+
+            <li class="second">
+                <div class="content">
+                    <h3 style="margin-bottom: 20px; text-align: center;">صفحه اصلی لوازم خانگی</h3>
+                    <div class="tasvir">
+                        <img src="https://ayeezh.ir/demo/shop5/wp-content/uploads/2019/12/500.jpg">
+                    </div>
+                    <svg style="max-width: 5%; left: 46%; bottom: 125px; position:absolute" viewBox="0 0 15.4 13.7">
+                        <path
+                            d="M16.4,5.3A4.4,4.4,0,0,0,13.3,4a4.1,4.1,0,0,0-2.4.8,9.4,9.4,0,0,0-1,1L9,4.8A4.6,4.6,0,0,0,6.5,4a4.3,4.3,0,0,0-3,1.3A4.8,4.8,0,0,0,2.3,8.6a5.6,5.6,0,0,0,1.5,3.8,27,27,0,0,0,3.8,3.5l1.7,1.5a.9.9,0,0,0,.6.3.7.7,0,0,0,.6-.3l1.8-1.5a34.1,34.1,0,0,0,3.8-3.5,6.1,6.1,0,0,0,1.5-3.8A5,5,0,0,0,16.4,5.3Z"
+                            transform="translate(-2.3 -4)" fill="#ecb865" />
+                    </svg>
+                    <p style="text-align: center;">کد: 512<br>
+                        فروش محصول<br>
+                        بنر های تبلیغاتی<br>
+                        ارائه لوازم خانگی </p>
+                </div>
+                <div class="time">
+                    <h4><a href="http://lavazemkhane.com/"
+                            style="color: white; text-decoration: none;">lavazemkhane.com</a></h4>
+                </div>
+            </li>
+
+            <li class="third">
+                <div class="content">
+                    <h3 style="margin-bottom: 20px; text-align: center;">صفحه اصلی ممتاز سرور</h3>
+                    <div class="tasvir">
+                        <img class="eyy"
+                            src="https://momtazserver.com/wp-content/uploads/2021/09/momtazserver.com_.jpg">
+                    </div>
+                    <svg style="max-width: 5%; left: 46%; bottom: 125px; position:absolute" viewBox="0 0 15.4 13.7">
+                        <path
+                            d="M16.4,5.3A4.4,4.4,0,0,0,13.3,4a4.1,4.1,0,0,0-2.4.8,9.4,9.4,0,0,0-1,1L9,4.8A4.6,4.6,0,0,0,6.5,4a4.3,4.3,0,0,0-3,1.3A4.8,4.8,0,0,0,2.3,8.6a5.6,5.6,0,0,0,1.5,3.8,27,27,0,0,0,3.8,3.5l1.7,1.5a.9.9,0,0,0,.6.3.7.7,0,0,0,.6-.3l1.8-1.5a34.1,34.1,0,0,0,3.8-3.5,6.1,6.1,0,0,0,1.5-3.8A5,5,0,0,0,16.4,5.3Z"
+                            transform="translate(-2.3 -4)" fill="#ecb865" />
+                    </svg>
+                    <p style="text-align: center;">کد: 520<br>
+                        خریداری دامنه و اجاره هاست<br>
+                        انیمیشن های تبلیغاتی<br>
+                        ارائه خدمات طراحی سایت </p>
+                </div>
+                <div class="time">
+                    <h4><a href="https://momtazserver.com/"
+                            style="color: white; text-decoration: none;">momtazserver.com</a></h4>
+                </div>
+            </li>
+            <li class="forth">
+                <div class="content">
+                    <h3 style="margin-bottom: 20px; text-align: center;">صفحه اصلی بلندگو و اسپیکر</h3>
+                    <div class="tasvir">
+                        <img src="https://momtazserver.com/wp-content/uploads/2021/09/paytakhtshop.com_.png">
+                    </div>
+                    <svg style="max-width: 5%; left: 46%; bottom: 125px; position:absolute" viewBox="0 0 15.4 13.7">
+                        <path
+                            d="M16.4,5.3A4.4,4.4,0,0,0,13.3,4a4.1,4.1,0,0,0-2.4.8,9.4,9.4,0,0,0-1,1L9,4.8A4.6,4.6,0,0,0,6.5,4a4.3,4.3,0,0,0-3,1.3A4.8,4.8,0,0,0,2.3,8.6a5.6,5.6,0,0,0,1.5,3.8,27,27,0,0,0,3.8,3.5l1.7,1.5a.9.9,0,0,0,.6.3.7.7,0,0,0,.6-.3l1.8-1.5a34.1,34.1,0,0,0,3.8-3.5,6.1,6.1,0,0,0,1.5-3.8A5,5,0,0,0,16.4,5.3Z"
+                            transform="translate(-2.3 -4)" fill="#ecb865" />
+                    </svg>
+                    <p style="text-align: center;">کد: 522<br>
+                        فروش محصول<br>
+                        بنر های تبلیغاتی<br>
+                        ارائه لوازم صوتی </p>
+                </div>
+                <div class="time">
+                    <h4><a href="https://paytakhtshop.com/"
+                            style="color: white; text-decoration: none;">paytakhtshop.com</a></h4>
+                </div>
+            </li>
+            <li class="fifth">
+                <div class="content">
+                    <h3 style="margin-bottom: 20px; text-align: center;">صفحه اصلی آیتایمز</h3>
+                    <div class="tasvir">
+                        <img class="eyy"
+                            src="https://momtazserver.com/wp-content/uploads/2021/09/itimes.ir_.png">
+                    </div>
+                    <svg style="max-width: 5%; left: 46%; bottom: 125px; position:absolute" viewBox="0 0 15.4 13.7">
+                        <path
+                            d="M16.4,5.3A4.4,4.4,0,0,0,13.3,4a4.1,4.1,0,0,0-2.4.8,9.4,9.4,0,0,0-1,1L9,4.8A4.6,4.6,0,0,0,6.5,4a4.3,4.3,0,0,0-3,1.3A4.8,4.8,0,0,0,2.3,8.6a5.6,5.6,0,0,0,1.5,3.8,27,27,0,0,0,3.8,3.5l1.7,1.5a.9.9,0,0,0,.6.3.7.7,0,0,0,.6-.3l1.8-1.5a34.1,34.1,0,0,0,3.8-3.5,6.1,6.1,0,0,0,1.5-3.8A5,5,0,0,0,16.4,5.3Z"
+                            transform="translate(-2.3 -4)" fill="#ecb865" />
+                    </svg>
+                    <p style="text-align: center;">کد: 560<br>
+                        مجله خبری<br>
+                        بنر های خبری<br>
+                        صفحات ریسپانسیو </p>
+                </div>
+                <div class="time">
+                    <h4><a href="https://itimes.ir/" style="color: white; text-decoration: none;">itimes.ir</a></h4>
+                </div>
+            </li>
+            <li class="sixth">
+                <div class="content">
+                    <h3 style="margin-bottom: 20px; text-align: center;">صفحه اصلی سایت سئو</h3>
+                    <div class="tasvir">
+                        <img src="https://momtazserver.com/wp-content/uploads/2021/09/momtazseo.com_.png">
+                    </div>
+                    <svg style="max-width: 5%; left: 46%; bottom: 125px; position:absolute" viewBox="0 0 15.4 13.7">
+                        <path
+                            d="M16.4,5.3A4.4,4.4,0,0,0,13.3,4a4.1,4.1,0,0,0-2.4.8,9.4,9.4,0,0,0-1,1L9,4.8A4.6,4.6,0,0,0,6.5,4a4.3,4.3,0,0,0-3,1.3A4.8,4.8,0,0,0,2.3,8.6a5.6,5.6,0,0,0,1.5,3.8,27,27,0,0,0,3.8,3.5l1.7,1.5a.9.9,0,0,0,.6.3.7.7,0,0,0,.6-.3l1.8-1.5a34.1,34.1,0,0,0,3.8-3.5,6.1,6.1,0,0,0,1.5-3.8A5,5,0,0,0,16.4,5.3Z"
+                            transform="translate(-2.3 -4)" fill="#ecb865" />
+                    </svg>
+                    <p style="text-align: center;">کد: 430<br>
+                        خدمات سئو<br>
+                        بنر های دیجیتال مارکتینگ<br>
+                        ارائه خدمات مارکتینگ </p>
+                </div>
+                <div class="time">
+                    <h4><a href="https://momtazseo.com/" style="color: white; text-decoration: none;">momtazseo.com</a>
+                    </h4>
+                </div>
+            </li>
+            <li class="seventh">
+                <div class="content">
+                    <h3 style="margin-bottom: 20px; text-align: center;">صفحه اصلی سایت پزشکی</h3>
+                    <div class="tasvir">
+                        <img class="eyy"
+                            src="https://ayeezh.ir/demo/shop5/wp-content/uploads/2021/02/afra11.jpg">
+                    </div>
+                    <svg style="max-width: 5%; left: 46%; bottom: 125px; position:absolute" viewBox="0 0 15.4 13.7">
+                        <path
+                            d="M16.4,5.3A4.4,4.4,0,0,0,13.3,4a4.1,4.1,0,0,0-2.4.8,9.4,9.4,0,0,0-1,1L9,4.8A4.6,4.6,0,0,0,6.5,4a4.3,4.3,0,0,0-3,1.3A4.8,4.8,0,0,0,2.3,8.6a5.6,5.6,0,0,0,1.5,3.8,27,27,0,0,0,3.8,3.5l1.7,1.5a.9.9,0,0,0,.6.3.7.7,0,0,0,.6-.3l1.8-1.5a34.1,34.1,0,0,0,3.8-3.5,6.1,6.1,0,0,0,1.5-3.8A5,5,0,0,0,16.4,5.3Z"
+                            transform="translate(-2.3 -4)" fill="#ecb865" />
+                    </svg>
+                    <p style="text-align: center;">کد: 525<br>
+                        تمام صفحه<br>
+                        معرفی داروها<br>
+                        معرفی پزشکان </p>
+                </div>
+                <div class="time">
+                    <h4><a href="https://afratanop.com/" style="color: white; text-decoration: none;">afratanop.com</a>
+                    </h4>
+                </div>
+            </li>
+            <li class="eighth">
+                <div class="content">
+                    <h3 style="margin-bottom: 20px; text-align: center;">صفحه اصلی سایت سوپر مارکت</h3>
+                    <div class="tasvir">
+                        <img src="https://ayeezh.ir/demo/shop5/wp-content/uploads/2021/02/فروشگاه-scaled.jpg">
+                    </div>
+                    <svg style="max-width: 5%; left: 46%; bottom: 125px; position:absolute" viewBox="0 0 15.4 13.7">
+                        <path
+                            d="M16.4,5.3A4.4,4.4,0,0,0,13.3,4a4.1,4.1,0,0,0-2.4.8,9.4,9.4,0,0,0-1,1L9,4.8A4.6,4.6,0,0,0,6.5,4a4.3,4.3,0,0,0-3,1.3A4.8,4.8,0,0,0,2.3,8.6a5.6,5.6,0,0,0,1.5,3.8,27,27,0,0,0,3.8,3.5l1.7,1.5a.9.9,0,0,0,.6.3.7.7,0,0,0,.6-.3l1.8-1.5a34.1,34.1,0,0,0,3.8-3.5,6.1,6.1,0,0,0,1.5-3.8A5,5,0,0,0,16.4,5.3Z"
+                            transform="translate(-2.3 -4)" fill="#ecb865" />
+                    </svg>
+                    <p style="text-align: center;">کد: 416<br>
+                        اشتراک گذاری<br>
+                        دسته بندی مارکت ها<br>
+                        هایپرمارکت </p>
+                </div>
+                <div class="time">
+                    <h4><a href="https://mall.rusplus.ir/"
+                            style="color: white; text-decoration: none;">mall.rusplus.ir</a></h4>
+                </div>
+            </li>
+            <li class="nineth">
+                <div class="content">
+                    <h3 style="margin-bottom: 20px; text-align: center;">صفحه اصلی سایت کالای طب</h3>
+                    <div class="tasvir">
+                        <img class="eyy"
+                            src="https://ayeezh.ir/demo/shop5/wp-content/uploads/2021/02/rus1.jpg">
+                    </div>
+                    <svg style="max-width: 5%; left: 46%; bottom: 125px; position:absolute" viewBox="0 0 15.4 13.7">
+                        <path
+                            d="M16.4,5.3A4.4,4.4,0,0,0,13.3,4a4.1,4.1,0,0,0-2.4.8,9.4,9.4,0,0,0-1,1L9,4.8A4.6,4.6,0,0,0,6.5,4a4.3,4.3,0,0,0-3,1.3A4.8,4.8,0,0,0,2.3,8.6a5.6,5.6,0,0,0,1.5,3.8,27,27,0,0,0,3.8,3.5l1.7,1.5a.9.9,0,0,0,.6.3.7.7,0,0,0,.6-.3l1.8-1.5a34.1,34.1,0,0,0,3.8-3.5,6.1,6.1,0,0,0,1.5-3.8A5,5,0,0,0,16.4,5.3Z"
+                            transform="translate(-2.3 -4)" fill="#ecb865" />
+                    </svg>
+                    <p style="text-align: center;">کد: 518<br>
+                        مشاهده منو<br>
+                        عرض کامل کشویی<br>
+                        تجهیزات پزشکی </p>
+                </div>
+                <div class="time">
+                    <h4><a href="https://rusplus.ir/shop/" style="color: white; text-decoration: none;">rusplus.ir</a>
+                    </h4>
+                </div>
+            </li>
+            <li class="tenth">
+                <div class="content">
+                    <h3 style="margin-bottom: 20px; text-align: center;">سایت مهاجرت به روسیه</h3>
+                    <div class="tasvir">
+                        <img src="https://momtazserver.com/wp-content/uploads/2021/09/elittte.com-min.png">
+                    </div>
+                    <svg style="max-width: 5%; left: 46%; bottom: 125px; position:absolute" viewBox="0 0 15.4 13.7">
+                        <path
+                            d="M16.4,5.3A4.4,4.4,0,0,0,13.3,4a4.1,4.1,0,0,0-2.4.8,9.4,9.4,0,0,0-1,1L9,4.8A4.6,4.6,0,0,0,6.5,4a4.3,4.3,0,0,0-3,1.3A4.8,4.8,0,0,0,2.3,8.6a5.6,5.6,0,0,0,1.5,3.8,27,27,0,0,0,3.8,3.5l1.7,1.5a.9.9,0,0,0,.6.3.7.7,0,0,0,.6-.3l1.8-1.5a34.1,34.1,0,0,0,3.8-3.5,6.1,6.1,0,0,0,1.5-3.8A5,5,0,0,0,16.4,5.3Z"
+                            transform="translate(-2.3 -4)" fill="#ecb865" />
+                    </svg>
+                    <p style="text-align: center;">کد: 550<br>
+                        مشاهده منو<br>
+                        عرض کامل کشویی<br>
+                        مهاجرت و وکالت </p>
+                </div>
+                <div class="time">
+                    <h4><a href="https://elittte.com/" style="color: white; text-decoration: none;">elittte.com</a></h4>
+                </div>
+            </li>
+            <li class="eleventh">
+                <div class="content">
+                    <h3 style="margin-bottom: 20px; text-align: center;">صفحه اصلی سایت محصولات پوست و مو</h3>
+                    <div class="tasvir">
+                        <img class="eyy"
+                            src="https://momtazserver.com/wp-content/uploads/2021/09/ziplin.ir_.png">
+                    </div>
+                    <svg style="max-width: 5%; left: 50%; bottom: 125px; position:absolute" viewBox="0 0 15.4 13.7">
+                        <path
+                            d="M16.4,5.3A4.4,4.4,0,0,0,13.3,4a4.1,4.1,0,0,0-2.4.8,9.4,9.4,0,0,0-1,1L9,4.8A4.6,4.6,0,0,0,6.5,4a4.3,4.3,0,0,0-3,1.3A4.8,4.8,0,0,0,2.3,8.6a5.6,5.6,0,0,0,1.5,3.8,27,27,0,0,0,3.8,3.5l1.7,1.5a.9.9,0,0,0,.6.3.7.7,0,0,0,.6-.3l1.8-1.5a34.1,34.1,0,0,0,3.8-3.5,6.1,6.1,0,0,0,1.5-3.8A5,5,0,0,0,16.4,5.3Z"
+                            transform="translate(-2.3 -4)" fill="#ecb865" />
+                    </svg>
+                    <p style="text-align: center;">کد: 542<br>
+                        سفارشی سازی سایت<br>
+                        عرض کامل کشویی<br>
+                        محصولات پوست و مو </p>
+                </div>
+                <div class="time">
+                    <h4><a href="https://ziplin.ir/" style="color: white; text-decoration: none;">ziplin.ir</a>
+                    </h4>
+                </div>
+            </li>
+            <li class="twelveth">
+                <div class="content">
+                    <h3 style="margin-bottom: 20px; text-align: center;">سایت ارائه دهنده قطعات سخت افزاری</h3>
+                    <div class="tasvir">
+                        <img src="https://momtazserver.com/wp-content/uploads/2021/09/takyek.com_.png">
+                    </div>
+                    <svg style="max-width: 5%; left: 46%; bottom: 125px; position:absolute" viewBox="0 0 15.4 13.7">
+                        <path
+                            d="M16.4,5.3A4.4,4.4,0,0,0,13.3,4a4.1,4.1,0,0,0-2.4.8,9.4,9.4,0,0,0-1,1L9,4.8A4.6,4.6,0,0,0,6.5,4a4.3,4.3,0,0,0-3,1.3A4.8,4.8,0,0,0,2.3,8.6a5.6,5.6,0,0,0,1.5,3.8,27,27,0,0,0,3.8,3.5l1.7,1.5a.9.9,0,0,0,.6.3.7.7,0,0,0,.6-.3l1.8-1.5a34.1,34.1,0,0,0,3.8-3.5,6.1,6.1,0,0,0,1.5-3.8A5,5,0,0,0,16.4,5.3Z"
+                            transform="translate(-2.3 -4)" fill="#ecb865" />
+                    </svg>
+                    <p style="text-align: center;">کد: 429<br>
+                        مدیریت فروشگاهی<br>
+                        عرض کامل کشویی<br>
+                        فروش قطعات سخت افزاری </p>
+                </div>
+                <div class="time">
+                    <h4><a href="https://takyek.com/" style="color: white; text-decoration: none;">takyek.com</a></h4>
+                </div>
+            </li>
+            <li class="thirteenth">
+                <div class="content">
+                    <h3 style="margin-bottom: 20px; text-align: center;">سایت اسلامی</h3>
+                    <div class="tasvir">
+                        <img class="eyy" src="https://momtazserver.com/wp-content/uploads/2021/09/majma.ir_.png">
+                    </div>
+                    <svg style="max-width: 5%; left: 46%; bottom: 125px; position:absolute" viewBox="0 0 15.4 13.7">
+                        <path
+                            d="M16.4,5.3A4.4,4.4,0,0,0,13.3,4a4.1,4.1,0,0,0-2.4.8,9.4,9.4,0,0,0-1,1L9,4.8A4.6,4.6,0,0,0,6.5,4a4.3,4.3,0,0,0-3,1.3A4.8,4.8,0,0,0,2.3,8.6a5.6,5.6,0,0,0,1.5,3.8,27,27,0,0,0,3.8,3.5l1.7,1.5a.9.9,0,0,0,.6.3.7.7,0,0,0,.6-.3l1.8-1.5a34.1,34.1,0,0,0,3.8-3.5,6.1,6.1,0,0,0,1.5-3.8A5,5,0,0,0,16.4,5.3Z"
+                            transform="translate(-2.3 -4)" fill="#ecb865" />
+                    </svg>
+                    <p style="text-align: center;">کد: 512<br>
+                        مدیریت صفحات<br>
+                        عرض کامل کشویی<br>
+                        برگزاری آزمون </p>
+                </div>
+                <div class="time">
+                    <h4><a href="https://majmamahdaviat.ir/" style="color: white; text-decoration: none;">majmamahdaviat.ir</a></h4>
+                </div>
+            </li>
+            <div style="clear:both;"></div>
+        </ul>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/ScrollTrigger.min.js"></script>
+    <script src="portfolioAnimation.js"></script>
+</body>
+
+</html>
